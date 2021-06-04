@@ -21,13 +21,46 @@ public class ShowOfType {
                         }
                         System.out.print("\n");
                     }
-                    break;
-                case 3:
+                    System.out.println();
                     for (int i = 0; i < 5; i++) {
                         for(int j = 5;j>i;j--){
                             System.out.print("* ");
                         }
                         System.out.print("\n");
+                    }
+                    System.out.println();
+                    for(int i = 0;i<6;i++){
+                        for(int j = 5;j>i;j--){
+                            System.out.print("  ");
+                        }
+                        for(int k = 0;k<i;k++){
+                            System.out.printf("* ");
+                        }
+                        System.out.println();
+                    }
+                    System.out.println();
+                    for(int i = 0 ;i<5;i++){
+                        for(int k =0 ;k<i;k++){
+                            System.out.print("  ");
+                        }
+                        for(int j = 5;j>i;j--){
+                            System.out.print(" *");
+                        }
+                        System.out.println();
+
+                    }
+
+                    break;
+                case 3:
+                    for(int i = 0 ;i<5;i++){
+                        for(int k = 5;k>i;k--){
+                            System.out.print(" ");
+                        }
+                        for(int j = 0;j<i+1;j++){
+                            System.out.print("* ");
+                        }
+                        System.out.println();
+
                     }
                     break;
                 case 1:
