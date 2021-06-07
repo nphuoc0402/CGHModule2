@@ -54,10 +54,10 @@ public class QuadraticEquation {
             System.out.println("Enter the number b: ");
             b = input.nextDouble();
             System.out.println("Enter the number c: ");
+            c = input.nextDouble();
             QuadraticEquation pt2 = new QuadraticEquation(a,b,c);
-            System.out.println(pt2.getDiscriminant());
             if(pt2.getDiscriminant()>0){
-                System.out.printf("The equation has two roots %f and %.1f",pt2.getRoot1(),pt2.getRoot2());
+                System.out.printf("The equation has two roots %.1f and %.1f",pt2.getRoot1(),pt2.getRoot2());
             }else if(pt2.getDiscriminant()==0){
                 System.out.printf("The equation has one root %.1f",pt2.getRoot1());
             }else{
