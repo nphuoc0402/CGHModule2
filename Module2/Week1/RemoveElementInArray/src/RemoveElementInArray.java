@@ -38,7 +38,7 @@ public class RemoveElementInArray {
             }
         }
         if (count==0) {
-            System.out.printf("%d not found in Array", X);
+            System.out.printf("%d not found in Array\n", X);
         } else {
 
             for (int i = 0; i < count; i++) {
@@ -46,7 +46,7 @@ public class RemoveElementInArray {
             }
         }
         System.out.printf("Array: ");
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length-1; i++) {
             System.out.printf("%d\t", arr[i]);
         }
     }
