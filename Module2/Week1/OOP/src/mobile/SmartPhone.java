@@ -1,4 +1,4 @@
-package Mobile;
+package mobile;
 
 public class SmartPhone{
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Rectangle;
+package rectangle;
 import java.util.Scanner;
 public class Rectangle {
     double width, height;

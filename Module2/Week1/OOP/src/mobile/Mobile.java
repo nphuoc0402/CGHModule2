@@ -1,4 +1,4 @@
-package Mobile;
+package mobile;
 
 public class Mobile {
 
