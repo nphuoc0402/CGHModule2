@@ -37,7 +37,7 @@ public class Point3D extends Point2D{
     }
 
     public String toString(){
-        return String.format("X = %f\t Y = %f\n%s",getX(),getY(), Arrays.toString(getXYZ()));
+        return String.format("X = %f\tY = %f\tZ = %f\n%s",getX(),getY(),getZ(), Arrays.toString(getXYZ()));
     }
 
 }
