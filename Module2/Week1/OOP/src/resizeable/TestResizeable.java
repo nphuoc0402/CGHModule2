@@ -2,6 +2,8 @@ package resizeable;
 
 import shape.Shape;
 
+import java.util.Objects;
+
 public class TestResizeable {
     public static void main(String[] args) {
         shape.Shape[] shapes = new shape.Shape[3];
@@ -12,7 +14,7 @@ public class TestResizeable {
 
         for(Shape shape : shapes){
             System.out.println(shape);
-            if(shape instanceof Resizeable) ((Resizeable) shape).resize(30);
+            ((Resizeable) shape).resize(50);
             System.out.println(shape);
         }
 
