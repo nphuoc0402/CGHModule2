@@ -23,11 +23,11 @@ public class ATM extends Account{
             Date current = new Date();
             FileWriter fw = new FileWriter("F:\\JAVA\\Module2\\Week1\\OOP\\src\\atm\\Account.json",true);
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(super.getName()+" " + "So du TK:" + getBalance() + "\n");
-            bw.write("Giao dich: " + current + "\n");
+            bw.write(super.getName()+" " + "So du TK:" + getBalance() + " VND" +"\n");
+            bw.write("Time: " + current + "\n");
 
             for(int j = receiverList.size(), k = 1; j > receiverList.size() - 3 && j > 0; j--, k++){
-                bw.write(k + " " + receiverList.get(j) + "VND" + "\n");
+                bw.write(k + " " + receiverList.get(j) + " VND" + "\n");
             }
 
             bw.close();
