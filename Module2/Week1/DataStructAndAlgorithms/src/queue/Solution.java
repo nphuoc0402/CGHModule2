@@ -35,8 +35,7 @@ class  Solution {
                 queue.front = null;
                 queue.rear = null;
         }else {
-                Node temp = queue.front;
-                value = temp.data;
+                value = queue.front.data;
                 queue.front = queue.front.link;
                 queue.rear.link = queue.front;
             }
