@@ -1,4 +1,4 @@
-package product;
+package product.linkedlist;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -13,7 +13,7 @@ public class Product {
         this.ID = id++;
     }
 
-    public Product(int ID, String productName,long productPrice){
+    public Product(int ID, String productName, long productPrice){
         this.ID = id++;
         this.productName = productName;
         this.productPrice = productPrice;
