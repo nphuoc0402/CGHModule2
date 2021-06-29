@@ -1,3 +1,5 @@
+package introduction.method;
+
 import java.util.Scanner;
 
 public class ConvertToCurrency {
