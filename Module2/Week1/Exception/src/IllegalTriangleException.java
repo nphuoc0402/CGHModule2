@@ -3,31 +3,25 @@ import org.xml.sax.InputSource;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class IllegalTriangleException extends Exception {
-    public IllegalTriangleException(String message) {
-        super(message);
-    }
+public class IllegalTriangleException {
 
-    public IllegalTriangleException() {
 
-    }
-
-    static void checkTriangle(int a, int b, int c) throws IllegalTriangleException {
+    static void checkTriangle(int a, int b, int c)  {
         try {
 
             if (a < 0 || b < 0 || c < 0) {
-                throw new IllegalTriangleException("a,b,c > 0");
+                System.out.println(("a,b,c > 0"));
 
             }
             if (a + b <= c || a + c <= b || c + b <= a) {
-                throw new IllegalTriangleException("is not triangle");
+                System.out.println("is not triangle");
             }
         } catch (InputMismatchException e) {
-            throw new IllegalTriangleException("is triangle");
+            System.out.println("is triangle");
         }
     }
 
-    public static void main(String[] args) throws IllegalTriangleException {
+    public static void main(String[] args){
 
         try {
             Scanner input = new Scanner(System.in);
@@ -41,9 +35,7 @@ public class IllegalTriangleException extends Exception {
             System.out.println("Enter c :");
             int c = input.nextInt();
             checkTriangle(a, b, c);
-        } catch (IllegalTriangleException e) {
-            System.out.println(e.getMessage());
-        } catch (InputMismatchException e) {
+        }catch (InputMismatchException e) {
             System.out.println("is not number ");
         }
     }
