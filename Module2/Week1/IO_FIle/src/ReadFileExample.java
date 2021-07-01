@@ -15,10 +15,10 @@ public class ReadFileExample {
           File file = new File("src\\number.txt");
           FileWriter fw = new FileWriter(file);
           BufferedWriter bw = new BufferedWriter(fw);
-            bw.write("3\n");
-            bw.write("5\n");
-            bw.write("7\n");
-            bw.write("9\n");
+            Scanner input = new Scanner(System.in);
+            for (int i = 0; i < 5; i++){
+                bw.write(input.nextLine() + "\n");
+            }
             bw.close();
             // Kiểm tra nếu file không tồn tại thì ném ra ngoại lệ.
             if (!file.exists()) {
@@ -26,11 +26,11 @@ public class ReadFileExample {
             }
             // Đọc từng dòng của file và tiến hành cộng tổng lại
             BufferedReader br = new BufferedReader(new FileReader(file));
-            String line = "";
+            String line ;
             int sum = 0;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
-                sum += Integer.parseInt(line);
+                sum += Integer.parseInt(String.valueOf(line));
             }
             br.close();
             // Hiển thị ra màn hình tổng các số nguyên trong file
