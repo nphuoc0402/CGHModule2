@@ -147,32 +147,37 @@ public class Restaurant {
     }
 
     public void bookTable(){
-            int numTable = findTheEmptyTable();
+            Scanner input = new Scanner(System.in);
+            int numTable = 1;
             Customer customer = new Customer();
             customer.input();
             customerList.add(customer);
-//            readCsvFile();
-            WriteFile();
             customer.setIdCustomer(numTable);
+            customer.getOrder().setIdOder(numTable);
+            customerList.add(numTable,customer);
+            tables.get(numTable).bookATable();
+            //            readCsvFile();
+            customer.setIdCustomer(numTable);
+            showProduct();
             String nameProduct;
-            do {
-                System.out.printf("What would you like to drink:");
-                nameProduct = new Scanner(System.in).nextLine();
-                for (int i = 0; i < productList.size(); i++) {
-                    if (productList.get(i).getNameProduct().equals(nameProduct)) {
-                        customer.makeOrderproduct(productList.get(i));
-                        System.out.printf("Hello\n");
-                        break;
-                    } else {
-                        System.out.printf("Product is not available! Please choose another Product");
-                        break;
-                    }
+            System.out.printf("What would you like to drink:\n");
+            nameProduct = new Scanner(System.in).nextLine();
+            for (int i = 0; i < productList.size(); i++) {
+                if (productList.get(i).getNameProduct().equals(nameProduct)) {
+                    customer.makeOrderproduct(productList.get(i));
+                    System.out.printf("Hello\n");
+                    break;
+                } else {
+                    System.out.printf("Product is not available! Please choose another Product");
+                    break;
                 }
-            }while ( nameProduct == " ");
-
-            for(int i = 0; i < customerList.size(); i++){
-                System.out.print(customerList.get(i).getNameCustomer() + customerList.get(i).getOrder() + "\n");
             }
+//            readCsvFile();
+
+        for(int i = 0; i < customerList.size(); i++){
+            System.out.print(customerList.get(i).getNameCustomer() + customerList.get(i).getOrder() + "\n");
+        }
+
     }
 
 
@@ -196,8 +201,11 @@ public class Restaurant {
         Customer customer = getCustomer(id);
     }
 
-    public void ShowInvoice(){
-
+    public void ShowInvoice(int id){
+        Customer customer = getCustomer(id);
+        Bill bill = new Bill(id,customer);
+        bills.add(bill);
+        System.out.printf("Total: %d",bill.calTotalPrice());
     }
 
 
@@ -254,7 +262,18 @@ public class Restaurant {
                     System.out.println("===============================");
                     break;
                 case 5:
-                    ShowInvoice();
+                    int id = 0;
+                    System.out.printf("Customer name:\n");
+                    String nameCustomer = new Scanner(System.in).nextLine();
+                    for (int i = 0 ; i < customerList.size(); i++){
+                        if (customerList.get(i).getNameCustomer().equals(nameCustomer)){
+                            id = customerList.get(i).getIdCustomer();
+                        }else{
+                            System.out.printf("Invalid Name:");
+                            break;
+                        }
+                    }
+                    ShowInvoice(id);
                     System.out.println("Enter the choose to continue:");
                     System.out.println("===============================");
                     break;
