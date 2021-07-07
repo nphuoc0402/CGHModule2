@@ -43,7 +43,12 @@ public class Customer {
                 try{
                     System.out.printf("Number table:\n");
                     IdTable = new Scanner(System.in).nextInt();
-                    break;
+                    if(IdTable <= 0){
+                        System.out.println("Number of Table is valid");
+                        continue;
+                    }else{
+                        break;
+                    }
                 }catch (InputMismatchException e){
                     System.out.println("Invalid value!");
                 }

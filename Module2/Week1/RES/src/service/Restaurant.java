@@ -77,9 +77,6 @@ public class Restaurant {
     public void readFile(){
         String line = "";
         String splitBy = ",";
-        if (productList.size() == 0){
-            System.out.printf("Menu don't have any product!\n\n");
-        }
 //                System.out.printf("size %d",productList.size());
         try {
             //parsing a CSV file into BufferedReader class constructor
@@ -101,7 +98,9 @@ public class Restaurant {
     }
 
     public void showMenu(){
-        System.out.println("||=========================Menu==========================||");
+        System.out.println("||======================== Menu =========================||");
+        System.out.printf("|| %2s | %25s | %15s      ||\n","ID","Name","Price");
+        System.out.println("||=======================================================||");
         for (int i = 0; i < productList.size(); i++) {
             System.out.printf("|| %2s | %25s | " + String.format("%,15d  VND", productList.get(i).getPriceProduct() )  +
                     " ||\n",productList.get(i).getId(), productList.get(i).getNameProduct() );
@@ -181,33 +180,54 @@ public class Restaurant {
     }
 
     public void PrintOrder(){
+        if(customerList.size() == 0){
+            System.out.println("Table is Available");
+        }else{
         for (int i = 0; i < customerList.size(); i++){
             customerList.get(i).print();
+            }
         }
     }
 
     public void Payment(){
         int IdTable;
         boolean check = true;
-        System.out.printf("Enter the numberID of table:\n");
-        IdTable = new Scanner(System.in).nextInt();
         int index = -1;
-        for (int i = 0; i < customerList.size(); i++){
-            if(customerList.get(i).getIdTable() == IdTable){
-                customerList.get(i).print() ;
-                index = i;
-                check = false;
+            try{
+                do {
+                    System.out.printf("Enter the numberID of table:\n");
+                    IdTable = new Scanner(System.in).nextInt();
+                    if(customerList.size() == 0){
+                        System.out.println("No guest to book table");
+                        return;
+                    }else {
+                        for (int i = 0; i < customerList.size(); i++) {
+                            if (customerList.get(i).getIdTable() == IdTable) {
+                                customerList.get(i).print();
+                                index = i;
+                                check = false;
+                            }
+                        }
+                    }
+                    if(check){
+                        System.out.printf("No table " + IdTable + "\n");
+                        System.out.println("Please find your table");
+                    }
+
+                }while(check);
+            }catch (InputMismatchException e){
+                System.out.println("Please check ID Table again");
             }
-        }
+
         File infile = new File("F:\\JAVA\\Module2\\Week1\\Res\\src\\Bill.csv");
         try{
             FileWriter fw = new FileWriter(infile);
             BufferedWriter bw = new BufferedWriter(fw);
 
-                    bw.write(nameRestaurant + "\n" + tel + "\n" + Address + "\n" +
-                            customerList.get(index).getIdTable() + ", " +
-                            customerList.get(index).getNameCustomer() +
-                            customerList.get(index).productListOrder.get(index).getNameProduct() + ", " +
+                    bw.write(nameRestaurant + "," + tel + "," + Address + "," +
+                            customerList.get(index).getIdTable() + "," +
+                            customerList.get(index).getNameCustomer()  +"," +
+                            customerList.get(index).productListOrder.get(index).getNameProduct() + "," +
                             customerList.get(index).getTotalPayment() + "\n");
 
 
@@ -219,11 +239,9 @@ public class Restaurant {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(check){
-            System.out.printf("No table " + IdTable);
-        }else {
-            customerList.remove(index);
-        }
+
+        customerList.remove(index);
+
     }
 
     public static boolean checkNameProduct(String str) {
@@ -287,13 +305,15 @@ public class Restaurant {
     public void EditProduct(){
         String nameProduct;
         boolean check = true;
-        System.out.printf("Enter the name product to edit:\n");
+        while(true){
         try{
+            System.out.printf("Enter the name product to edit:\n");
             nameProduct = new Scanner(System.in).nextLine();
+            break;
         }catch (InputMismatchException e){
             System.out.println("Invalid value.");
-            System.out.println("Back Home!\n");
-            return;
+            System.out.println("Please Try Again!\n");
+            }
         }
         for (int i = 0; i < productList.size(); i++){
             if(productList.get(i).getNameProduct().equalsIgnoreCase(nameProduct)){
@@ -307,7 +327,7 @@ public class Restaurant {
             }
         }
         if(check){
-            System.out.printf("No product name is:\n ",nameProduct);
+            System.out.printf("No product name is: %s\n ",nameProduct);
         }
 
     }
