@@ -39,11 +39,10 @@ public class Customer {
     }
 
     public void input(){
-        Scanner input = new Scanner(System.in);
             while(true){
                 try{
                     System.out.printf("Number table:\n");
-                    IdTable = input.nextInt();
+                    IdTable = new Scanner(System.in).nextInt();
                     break;
                 }catch (InputMismatchException e){
                     System.out.println("Invalid value!");

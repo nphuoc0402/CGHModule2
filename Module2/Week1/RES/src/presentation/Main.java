@@ -69,8 +69,10 @@ public class Main {
                             break;
                     }
                     }while(choose != 0);
-                    break;
-                case 2:
+                break;
+
+            case 2:
+                do{
                     restaurant.ManageOrder();
                     while(true){
                         try {
@@ -81,8 +83,8 @@ public class Main {
                             System.out.println("Please Try Again!");
                         }
                     }
-                    do{
-                    switch (choose) {
+
+                        switch (choose) {
                         case 1:
                             restaurant.showMenu();
                             restaurant.Order();
@@ -99,7 +101,7 @@ public class Main {
                         default:
                             System.out.printf("Invalid Value\n");
                             break;
-                    }
+                        }
                     }while(choose != 0);
 
                     break;

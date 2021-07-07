@@ -118,9 +118,9 @@ public class Restaurant {
         Customer customer = new Customer();
         customer.input();
         customerList.add(customer);
-        boolean check;
+        boolean check = true;
         boolean checkproduct = false;
-        String choose = "";
+        String ch;
         do{
             System.out.printf("Enter your choose to order product: \n");
 
@@ -149,14 +149,12 @@ public class Restaurant {
                 }
             }
 
-
            do{
-               System.out.println("Dơ you want to continue order? (Y/N)");
-                choose = new Scanner(System.in).nextLine();
-           }while(!checkYorN(choose));
-            check = choose.equals('Y');
+               System.out.println("Do you want to continue order? (Y/N)");
+                ch = new Scanner(System.in).nextLine();
+           }while(!(ch.equals("Y")) && !(ch.equals("N")) );
 
-        }while(check);
+        }while(!ch.equals("N"));
 
         if(!checkproduct){
             System.out.printf("model.Product isn't available\n");
@@ -166,6 +164,7 @@ public class Restaurant {
         System.out.printf("Order Finish\n");
         System.out.printf("Payment is :\n" );
         System.out.println(String.format("%,d", totalPayment));
+
     }
 
     public void PrintOrder(){
