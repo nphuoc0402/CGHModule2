@@ -32,7 +32,6 @@ public class Restaurant {
 
     public void inputProduct() {
             Product product = new Product();
-        System.out.println(productList.size());
             while(true){
             product.input();
             int count = 0;
@@ -115,39 +114,53 @@ public class Restaurant {
         int priceProduct = 0;
         int totalPayment = 0;
         int number;
+        boolean checkIdtable = true;
         Customer customer = new Customer();
         customer.input();
+        for(int i = 0; i < customerList.size(); i++){
+            if(customerList.get(i).getIdTable() == customer.getIdTable()){
+                System.out.println("Table is occupied");
+                return;
+                }
+            }
+
         customerList.add(customer);
         boolean check = true;
         boolean checkproduct = false;
         String ch;
         do{
-            System.out.printf("Enter your choose to order product: \n");
+            do {
+                System.out.printf("Enter your choose to order product: \n");
 
-            SelectProduct = new Scanner(System.in).nextLine();
-            check = false;
+                SelectProduct = new Scanner(System.in).nextLine();
+                check = false;
 
-            for (int i = 0; i < productList.size(); i++){
+                for (int i = 0; i < productList.size(); i++) {
 
-                if(productList.get(i).getNameProduct().equalsIgnoreCase(SelectProduct)){
-                    System.out.printf("Enter the number:\n");
-                    while (true){
-                        try{
-                            number = new Scanner(System.in).nextInt();
-                            break;
-                        }catch (InputMismatchException e){
-                            System.out.println("Invalid Value!");
+                    if (productList.get(i).getNameProduct().equalsIgnoreCase(SelectProduct)) {
+                        System.out.printf("Enter the number:\n");
+                        while (true) {
+                            try {
+                                number = new Scanner(System.in).nextInt();
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Invalid Value!");
+                            }
                         }
-                    }
-                    Product product = productList.get(i);
-                    customer.setOrder(product);
-                    priceProduct = product.getPriceProduct()*number;
+                        Product product = productList.get(i);
+                        customer.setOrder(product);
+                        priceProduct = product.getPriceProduct() * number;
 //                    customer.setTotalPayment(priceProduct);
-                    totalPayment += priceProduct;
-                    checkproduct = true;
+                        totalPayment += priceProduct;
+                        checkproduct = true;
 
+                    }
+                }if(!checkproduct){
+                    System.out.println("Product isn't available");
+                    System.out.println("Please choose another product!");
+                    check = true;
                 }
-            }
+            }while(check);
 
            do{
                System.out.println("Do you want to continue order? (Y/N)");
