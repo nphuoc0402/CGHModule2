@@ -19,6 +19,7 @@ public class Restaurant {
     private Product product;
     private Customer customer;
     private String SelectProduct;
+    private int revenue;
 
     public Restaurant(){
 
@@ -216,7 +217,9 @@ public class Restaurant {
 
                 }while(check);
             }catch (InputMismatchException e){
-                System.out.println("Please check ID Table again");
+                System.out.println("Invalid value! Return Home.");
+                return;
+
             }
 
         File infile = new File("F:\\JAVA\\Module2\\Week1\\Res\\src\\Bill.csv");
@@ -239,9 +242,16 @@ public class Restaurant {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        this.revenue += customerList.get(index).getTotalPayment();
         customerList.remove(index);
 
+    }
+
+//    public int revenue(){
+////        for (customerList)
+//    }
+    public void getRevenue(){
+        System.out.println(String.format("%,d VND", this.revenue));
     }
 
     public static boolean checkNameProduct(String str) {
@@ -284,7 +294,6 @@ public class Restaurant {
          try{
              while (true) {
                  System.out.printf("Enter price edit:\n");
-
                  int price = new Scanner(System.in).nextInt();
                  if(price > 0){
                     return price;
@@ -309,7 +318,11 @@ public class Restaurant {
         try{
             System.out.printf("Enter the name product to edit:\n");
             nameProduct = new Scanner(System.in).nextLine();
-            break;
+            if(nameProduct == ""){
+                return;
+            }else {
+                break;
+            }
         }catch (InputMismatchException e){
             System.out.println("Invalid value.");
             System.out.println("Please Try Again!\n");
@@ -340,7 +353,11 @@ public class Restaurant {
             try {
                 System.out.println("Enter the name product to delete");
                 DeleteProduct = new Scanner(System.in).nextLine();
-                break;
+                if(DeleteProduct == ""){
+                    return;
+                }else{
+                    break;
+                }
 
             } catch (InputMismatchException e) {
                 System.out.println("Invalid value.");
@@ -368,12 +385,18 @@ public class Restaurant {
     }
 
     public void searchProduct(){
-        System.out.println("Enter the product want to search in menu");
-        String nameProduct = new Scanner(System.in).nextLine();
+        String nameProduct = null;
+        while(nameProduct != ""){
+            System.out.println("Enter the product want to search in menu");
+            nameProduct = new Scanner(System.in).nextLine();
         for (int i = 0; i < productList.size(); i++){
             if (productList.get(i).getNameProduct().equalsIgnoreCase(nameProduct)){
                 System.out.println(productList.get(i).toString()+"\n");
+                return;
             }
+        }
+            System.out.println("Product isn't available");
+            continue;
         }
     }
 
@@ -396,6 +419,7 @@ public class Restaurant {
         System.out.println("|| 1. Show menu product and order        ||");
         System.out.println("|| 2. Show table Order                   ||");
         System.out.println("|| 3. Payment                            ||");
+        System.out.println("|| 4. Revenue                            ||");
         System.out.println("||=======================================||");
         System.out.println("Your Select");
     }

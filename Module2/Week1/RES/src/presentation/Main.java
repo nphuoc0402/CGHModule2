@@ -95,6 +95,10 @@ public class Main {
                         case 3:
                             restaurant.Payment();
                             break;
+                        case 4:
+                            System.out.print("Revenue: ");
+                            restaurant.getRevenue();
+                            break;
                         case 0:
                             System.out.printf("Back Home\n");
                             break;

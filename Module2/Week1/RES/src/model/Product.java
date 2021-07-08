@@ -25,10 +25,11 @@ public class Product {
         }
     }
 
-    public void input(){
+    Scanner input = new Scanner(System.in);
 
+    public void input(){
         while(true){
-            System.out.printf("Enter the name Product:");
+            System.out.printf("Enter the name Product: (ex: Tra Sua)");
             this.nameProduct = new Scanner(System.in).nextLine();
                 if(checkNameProduct(nameProduct)){
                    System.out.println("success");
@@ -36,19 +37,25 @@ public class Product {
                  }else{
                      System.out.println("Please try again!");
             }
+                if(this.nameProduct == ""){
+                    return;
+                }
         }
         while(true) {
             try{
             System.out.printf("Enter the price:");
             this.priceProduct = new Scanner(System.in).nextInt();
             if(priceProduct <= 0){
-                System.out.println("Price product isn't greathan 0 ");
+                System.out.println("Price product isn't greater than 0 ");
                 continue;
             }else{
                 break;
             }
             }catch (InputMismatchException e){
                 System.out.println("Please try again!");
+            }
+            if(priceProduct == 0){
+                return;
             }
         }
 
