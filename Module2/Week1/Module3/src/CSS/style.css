@@ -1,0 +1,17 @@
+h1{
+    line-snap: baseline;
+    color: chocolate !important;
+}
+a{
+    text-decoration: none;
+    color: blue;
+}
+
+p{
+    text-indent: 30px;
+}
+body {
+    margin: 30px 250px 0px 150px;
+    text-align: justify;
+    font-size: large;
+}
