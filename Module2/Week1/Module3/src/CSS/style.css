@@ -9,6 +9,8 @@ a{
 
 p{
     text-indent: 30px;
+    text-transform: capitalize;
+    font-style: inherit;
 }
 body {
     margin: 30px 250px 0px 150px;
