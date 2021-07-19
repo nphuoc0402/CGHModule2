@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body{
+           font-family: Arial;
+        }
+        h3, #menu, #menu ul, #menu li{
+            padding: 0px;
+            margin: 0;
+            float: left;
+        }
+        h3{
+            position: relative;
+            top: 5px;
+        }
+
+        #menu li{
+            list-style: none;
+            position: relative;
+            width: 100px;
+            height: 30px;
+            padding: 0 20px;
+            background-color: black;
+            line-height: 30px;   
+            cursor: pointer;   
+        }
+
+        #menu li a{
+            text-decoration: none;
+            color: white;
+        }
+
+        #menu ul :hover{
+            background-color: red;
+        }
+
+        #menu ul ul {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            visibility: hidden;
+        }
+
+        #menu ul li:hover ul{
+            visibility: visible;
+        }
+
+
+
+    </style>
+  </head>
+  <body>
+    <div id="menu">
+        <h3>FaceBook</h3>
+      <ul>
+        <li>
+          <a href="#">Sem 1</a>
+          <ul>
+            <li><a href="#">Computing Fundametal</a></li>
+            <li><a href="#">C Programming</a></li>
+            <li><a href="#">Building Dynamic Website</a></li>
+            <li><a href="#">MS Transact-SQL</a></li>
+            <li><a href="#">Project</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Sem 2</a>
+          <ul>
+            <li><a href="#">fadsfadf Fundametal</a></li>
+            <li><a href="#">C fadfadf</a></li>
+            <li><a href="#">fdafafadf Dynamic Website</a></li>
+            <li><a href="#">àdafMfadfS Transact-SQL</a></li>
+            <li><a href="#">fdafad</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Sem 3</a>
+          <ul>
+            <li><a href="#">Computing fadsfadfa</a></li>
+            <li><a href="#">fadfaC adfsadsf</a></li>
+            <li><a href="#">Buildadfaing  Website</a></li>
+            <li><a href="#">MS Trafdafnsact-SQL</a></li>
+            <li><a href="#">fdasf</a></li>
+          </ul>
+        </li>
+        <li>
+            <a href="#">Sem 3</a>
+            <ul>
+              <li><a href="#">Thay Fundametal</a></li>
+              <li><a href="#">C Dat</a></li>
+              <li><a href="#">O Dynamic Website</a></li>
+              <li><a href="#">MS C-SQL</a></li>
+              <li><a href="#">Projecdàt</a></li>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
